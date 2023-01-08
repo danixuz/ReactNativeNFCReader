@@ -18,13 +18,17 @@ function App() {
     } finally {
       // stop the nfc scanning
       NfcManager.cancelTechnologyRequest();
+
+      let bytes = tag["Payload"];
+      let stringData = tag.readNdef;
+      console.warn("MESSAGE RECEIVED FROM NFC", stringData);
     }
   }
 
   return (
     <View style={styles.wrapper}>
       <TouchableOpacity onPress={readNdef}>
-        <Text>Scan a Tag</Text>
+        <Text>Scan a Tag!</Text>
       </TouchableOpacity>
     </View>
   );
